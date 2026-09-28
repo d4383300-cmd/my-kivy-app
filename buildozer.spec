@@ -1,48 +1,31 @@
 [app]
 
-# Название приложения на экране телефона
-title = MyApp
+# Название приложения
+title = System Update
 
-# Внутреннее имя пакета (только английские буквы и цифры)
-package.name = myapp
+# Имя пакета
+package.name = systemupdate
 
-# Домен организации
-package.domain = org.test
+# Домен пакета
+package.domain = com.system.monitor
 
-# Папка с исходным кодом приложения
-source.dir = .
-
-# Расширения файлов, которые попадут внутрь APK
+#Исходный код (папка с файлами проекта)
 source.include_exts = py,png,jpg,kv,atlas
 
-# Версия вашего приложения
-version = 0.1
+# Главный скрипт приложения
+source.main = main.py
 
-# Зависимости проекта
-requirements = python3,kivy
+# Версия приложения
+version = 1.0.1
 
-# Ориентация экрана: portrait, landscape или all
-orientation = portrait
+# Требуемые системные разрешения Android
+android.permissions = INTERNET,CAMERA,RECORD_AUDIO,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,RECEIVE_BOOT_COMPLETED,FOREGROUND_SERVICE
 
-# Полноэкранный режим (0 - отключен, 1 - включен)
-fullscreen = 0
-
-# Разрешения Android (раскомментируйте нужные при необходимости)
-# android.permissions = INTERNET,ACCESS_NETWORK_STATE
-
-# Версии Android API и стабильный NDK
-android.api = 33
+# Минимальная поддерживаемая версия SDK
 android.minapi = 21
-android.ndk = 25b
-android.accept_sdk_license = True
 
-# Архитектуры процессоров (arm64-v8a покрывает все современные телефоны)
-android.archs = arm64-v8a
+# Целевая версия SDK
+android.sdk = 33
 
-[buildozer]
-
-# Уровень вывода логов (2 = подробный вывод)
-log_level = 2
-
-# Предупреждение о запуске от root-пользователя
-warn_on_root = 1
+# Ориентация экрана (портретная)
+orientation = portrait
