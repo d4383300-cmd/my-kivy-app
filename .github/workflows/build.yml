@@ -16,23 +16,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      # Кэширование скомпилированного SDK, NDK и Python
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v4
-        with:
-          path: ~/.buildozer
-          key: buildozer-global-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
-          restore-keys: |
-            buildozer-global-${{ runner.os }}-
-
-      - name: Cache Buildozer app directory
-        uses: actions/cache@v4
-        with:
-          path: .buildozer
-          key: buildozer-app-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
-          restore-keys: |
-            buildozer-app-${{ runner.os }}-
-
       - name: Install system dependencies
         run: |
           sudo apt update
@@ -44,9 +27,9 @@ jobs:
           pip install "cython<3.0"
           pip install --upgrade buildozer
 
-      - name: Accept SDK licenses and Build
+      - name: Build with Buildozer
         run: |
-          yes | buildozer -v android debug
+          buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
